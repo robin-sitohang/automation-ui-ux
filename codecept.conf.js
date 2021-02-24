@@ -5,13 +5,22 @@ const { setHeadlessWhen } = require('@codeceptjs/configure');
 setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
-  tests: './*.js',
+  tests: './scenario/*.js',
   output: './output',
   helpers: {
     Puppeteer: {
       url: 'http://localhost',
       show: true,
-      windowSize: '1200x900'
+      windowSize: '1366 x 650',
+      waitForAction: 2000,
+      waitForNavigation: "networkidle0",
+      getPageTimeout: 180000,
+      waitForTimeout : 180000,
+      chrome: {
+        args: ['--start-maximized'],
+        defaultViewport: null
+
+      }
     }
   },
   include: {
